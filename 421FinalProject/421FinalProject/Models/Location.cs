@@ -14,7 +14,7 @@ namespace _421FinalProject.Models
 
         [Required]
         [ForeignKey("Destination")]
-        public string DestID { get; set; }
+        public int DestID { get; set; }
 
         [Required]
         public string Subset { get; set; }

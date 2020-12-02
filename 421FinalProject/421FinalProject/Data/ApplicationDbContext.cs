@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using _421FinalProject.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,5 +13,9 @@ namespace _421FinalProject.Data
             : base(options)
         {
         }
+
+        public DbSet<Destination> Destination { get; set; }
+        public DbSet<Location> Location { get; set; }
+        public DbSet<GenInfo> GenInfo { get; set; }
     }
 }
