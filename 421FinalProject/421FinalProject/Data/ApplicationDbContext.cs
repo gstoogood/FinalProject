@@ -16,6 +16,7 @@ namespace _421FinalProject.Data
 
         public DbSet<Destination> Destination { get; set; }
         public DbSet<Location> Location { get; set; }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<GenInfo> GenInfo { get; set; }
     }
 }
