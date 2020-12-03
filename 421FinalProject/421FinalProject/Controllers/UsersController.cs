@@ -81,7 +81,11 @@ namespace _421FinalProject.Views
                     Email = submitUser.AppUser.Email,
                     EmailConfirmed = true,
                     FirstName = submitUser.AppUser.FirstName,
-                    LastName = submitUser.AppUser.LastName
+                    LastName = submitUser.AppUser.LastName,
+                    State = submitUser.AppUser.State,
+                    City = submitUser.AppUser.City,
+                    StreetAddress = submitUser.AppUser.StreetAddress,
+                    ZipCode = submitUser.AppUser.ZipCode
                 };
                 string password = Request.Form["Password"].ToString();
                 var result = await _userManager.CreateAsync(user, password);
