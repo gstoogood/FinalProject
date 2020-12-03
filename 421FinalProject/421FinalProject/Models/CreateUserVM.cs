@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using _421FinalProject.Models;
 
 
-namespace _421FinalProject
+namespace _421FinalProject.Models
 {
     public class CreateUserVM
     {
