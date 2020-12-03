@@ -56,8 +56,6 @@ namespace _421FinalProject
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
-                // app.UseExceptionHandler("/Pets/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
@@ -72,7 +70,7 @@ namespace _421FinalProject
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Pets}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
