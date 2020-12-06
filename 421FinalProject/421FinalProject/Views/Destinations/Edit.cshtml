@@ -30,14 +30,34 @@
                 <span asp-validation-for="OfficialLanguage" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Image1" class="control-label"></label>
-                <input asp-for="Image1" class="form-control" />
-                <span asp-validation-for="Image1" class="text-danger"></span>
+                <label asp-for="OfficialSite" class="control-label"></label>
+                <input asp-for="OfficialSite" class="form-control" />
+                <span asp-validation-for="OfficialSite" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Image2" class="control-label"></label>
-                <input asp-for="Image2" class="form-control" />
-                <span asp-validation-for="Image2" class="text-danger"></span>
+                <label asp-for="ImageA" class="control-label"></label>
+                <input type="file" id="ImageA" name="ImageA" multiple class="form-control" />
+                <span asp-validation-for="ImageA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageB" class="control-label"></label>
+                <input asp-for="ImageB" class="form-control" />
+                <span asp-validation-for="ImageB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageC" class="control-label"></label>
+                <input asp-for="ImageC" class="form-control" />
+                <span asp-validation-for="ImageC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageD" class="control-label"></label>
+                <input asp-for="ImageD" class="form-control" />
+                <span asp-validation-for="ImageD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LocationKey" class="control-label"></label>
+                <input asp-for="LocationKey" class="form-control" />
+                <span asp-validation-for="LocationKey" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
