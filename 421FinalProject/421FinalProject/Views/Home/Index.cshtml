@@ -2,7 +2,7 @@
     ViewData["Title"] = "Home Page";
 }
 
-<header class="masthead">
+<body class="home-body">
     <div class="container h-100">
         <div class="row h-100 align-items-center justify-content-center text-center">
             <div class="col-lg-10 align-self-end">
@@ -13,18 +13,21 @@
                 <p class="text-white-75 font-weight-light mb-5">Find quick info about a city of your choice!</p>
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown button
+                        Select a city
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Bilbao</a>
-                        <a class="dropdown-item" href="#">Kathmandu</a>
-                        <a class="dropdown-item" href="#">Bolzano</a>
-                        <a class="dropdown-item" href="#">Sarajevo</a>
-                        <a class="dropdown-item" href="#">Barcelona</a>
-                        <a class="dropdown-item" href="#">Vancouver</a>
+                        <a class="dropdown-item" asp-area="" asp-controller="Locations" asp-action="Index">Bilbao</a>
+                        <a class="dropdown-item" asp-area="" asp-controller="Locations" asp-action="Index">Kathmandu</a>
+                        <a class="dropdown-item" asp-area="" asp-controller="Locations" asp-action="Index">Bolzano</a>
+                        <a class="dropdown-item" asp-area="" asp-controller="Locations" asp-action="Index">Sarajevo</a>
+                        <a class="dropdown-item" asp-area="" asp-controller="Locations" asp-action="Index">Barcelona</a>
+                        <a class="dropdown-item" asp-area="" asp-controller="Locations" asp-action="Index">Vancouver</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</header>
+</body>
+<footer class="home-footer">
+    &copy; 2020 - _421FinalProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+</footer>
