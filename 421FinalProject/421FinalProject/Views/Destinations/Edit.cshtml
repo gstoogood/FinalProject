@@ -35,6 +35,11 @@
                 <span asp-validation-for="OfficialSite" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="LocationKey" class="control-label"></label>
+                <input asp-for="LocationKey" class="form-control" />
+                <span asp-validation-for="LocationKey" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="ImageA" class="control-label"></label>
                 <input type="file" id="ImageA" name="ImageA" multiple class="form-control" />
                 <span asp-validation-for="ImageA" class="text-danger"></span>
@@ -54,11 +59,7 @@
                 <input asp-for="ImageD" class="form-control" />
                 <span asp-validation-for="ImageD" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="LocationKey" class="control-label"></label>
-                <input asp-for="LocationKey" class="form-control" />
-                <span asp-validation-for="LocationKey" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
