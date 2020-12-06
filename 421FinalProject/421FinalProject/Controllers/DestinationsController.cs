@@ -56,10 +56,22 @@ namespace _421FinalProject.Views
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DestID,City,Country,OfficialLanguage,Image1,Image2")] Destination destination)
+        public async Task<IActionResult> Create([Bind("DestID,City,Country,OfficialLanguage,Image1,Image2,OfficialSite,LocationKey")] Destination destination, IFormFile ImageA, IFormFile ImageB, IFormFile ImageC, IFormFile ImageD)
         {
             if (ModelState.IsValid)
             {
+                if (ImageA != null && ImageA.Length > 0)
+                {
+                    var memoryStream = new MemoryStream();
+                    await ImageA.CopyToAsync(memoryStream);
+                    destination.ImageA = memoryStream.ToArray();
+                }
+                if (ImageB != null && ImageB.Length > 0)
+                {
+                    var memoryStream = new MemoryStream();
+                    await ImageB.CopyToAsync(memoryStream);
+                    destination.ImageB = memoryStream.ToArray();
+                }
                 _context.Add(destination);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -112,6 +124,12 @@ namespace _421FinalProject.Views
                         {
                             destination.ImageA = existingPlace.ImageA;
                         }
+                    }
+                    if (ImageB != null && ImageB.Length > 0)
+                    {
+                        var memoryStream = new MemoryStream();
+                        await ImageB.CopyToAsync(memoryStream);
+                        destination.ImageB = memoryStream.ToArray();
                     }
                     _context.Update(destination);
                     await _context.SaveChangesAsync();

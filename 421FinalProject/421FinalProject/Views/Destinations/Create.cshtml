@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="City" class="control-label"></label>
@@ -37,6 +37,36 @@
                 <label asp-for="Image2" class="control-label"></label>
                 <input asp-for="Image2" class="form-control" />
                 <span asp-validation-for="Image2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OfficialSite" class="control-label"></label>
+                <input asp-for="OfficialSite" class="form-control" />
+                <span asp-validation-for="OfficialSite" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LocationKey" class="control-label"></label>
+                <input asp-for="LocationKey" class="form-control" />
+                <span asp-validation-for="LocationKey" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageA" class="control-label"></label>
+                <input type="file" id="ImageA" name="ImageA" multiple class="form-control" />
+                <span asp-validation-for="ImageA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageB" class="control-label"></label>
+                <input type="file" id="ImageB" name="ImageB" multiple class="form-control" />
+                <span asp-validation-for="ImageB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageC" class="control-label"></label>
+                <input type="file" id="ImageC" name="ImageC" multiple class="form-control" />
+                <span asp-validation-for="ImageC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageD" class="control-label"></label>
+                <input type="file" id="ImageD" name="ImageD" multiple class="form-control" />
+                <span asp-validation-for="ImageD" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
