@@ -88,7 +88,7 @@ namespace _421FinalProject.Views
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DestID,City,Country,OfficialLanguage,Image1,Image2,OfficialSite,LocationKey,ImageA,ImageB,ImageC,ImageD")] Destination destination, IFormFile ImageA)
+        public async Task<IActionResult> Edit(int id, [Bind("DestID,City,Country,OfficialLanguage,Image1,Image2,OfficialSite,LocationKey")] Destination destination, IFormFile ImageA, IFormFile ImageB, IFormFile ImageC, IFormFile ImageD)
         {
             if (id != destination.DestID)
             {
