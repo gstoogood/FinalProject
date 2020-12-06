@@ -56,7 +56,13 @@
                 @Html.DisplayFor(modelItem => item.OfficialSite)
             </td>
             <th>
-                @Html.DisplayFor(model => item.ImageA)
+                @if (item.ImageA != null)
+                    @if (item.ImageA != null)
+                        {
+                            var base64 = Convert.ToBase64String(item.ImageA);
+                            var imgSrc = string.Format("data:image/jpg;base64,{0}", base64);
+                            <img src="@imgSrc" height="100" width="100" />
+                        }
             </th>
             <th>
                 @Html.DisplayFor(model => item.ImageB)

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using _421FinalProject.Data;
 using _421FinalProject.Models;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace _421FinalProject.Views
 {
@@ -86,7 +88,7 @@ namespace _421FinalProject.Views
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DestID,City,Country,OfficialLanguage,Image1,Image2")] Destination destination)
+        public async Task<IActionResult> Edit(int id, [Bind("DestID,City,Country,OfficialLanguage,Image1,Image2,OfficialSite,LocationKey")] Destination destination, IFormFile ImageA)
         {
             if (id != destination.DestID)
             {
@@ -97,6 +99,20 @@ namespace _421FinalProject.Views
             {
                 try
                 {
+                    if (ImageA != null && ImageA.Length > 0)
+                    {
+                        var memoryStream = new MemoryStream();
+                        await ImageA.CopyToAsync(memoryStream);
+                        destination.ImageA = memoryStream.ToArray();
+                    }
+                    else
+                    {
+                        Destination existingPlace = _context.Destination.AsNoTracking().FirstOrDefault(m => m.DestID == id);
+                        if (existingPlace != null)
+                        {
+                            destination.ImageA = existingPlace.ImageA;
+                        }
+                    }
                     _context.Update(destination);
                     await _context.SaveChangesAsync();
                 }
