@@ -28,6 +28,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Image2)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfficialSite)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -48,6 +51,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Image2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OfficialSite)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.DestID">Edit</a> |
