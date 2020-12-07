@@ -7,7 +7,7 @@
 }
 
 <head>
-    <script src="../Map.js"></script>
+    <script type="text/javascript" src="../Map.js"></script>
     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
 
@@ -22,7 +22,7 @@
         }
     </style>
 
-    <script type="text/javascript">
+    @*<script type="text/javascript">
         function InitMap() {
             var map = new atlas.Map('myMap', {
                 center: [-2.93, 43.26],
@@ -91,18 +91,18 @@
 
 
         }
-    </script>
+    </script>*@
 
     <!-- Ensures that IE and Edge uses the latest version and doesn't emulate an older version -->
-    <meta http-equiv="x-ua-compatible" content="IE=Edge">
+    <!--<meta http-equiv="x-ua-compatible" content="IE=Edge">-->
 
     <!-- Ensures the web page looks good on all screen sizes. -->
-    <meta name="viewport" content="width=60%, initial-scale=1, shrink-to-fit=yes">
+    <!--<meta name="viewport" content="width=60%, initial-scale=1, shrink-to-fit=yes">-->
 </head>
 
 
 
-<body onload="InitMap()">
+<body onload="">
     <h1>Details</h1>
 
     <div>
