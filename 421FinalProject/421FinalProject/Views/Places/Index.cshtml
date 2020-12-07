@@ -1,0 +1,90 @@
+﻿@model IEnumerable<_421FinalProject.Models.Place>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subset)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OfficialSite)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationKey)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.City.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subset)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OfficialSite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationKey)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PlaceID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PlaceID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PlaceID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
