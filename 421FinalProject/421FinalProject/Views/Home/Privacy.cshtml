@@ -4,12 +4,12 @@
 
     <style>
         html, body {
-            margin: 0;
+            margin: 1px,1px,1px,1px;
         }
 
         #myMap {
-            height: 100vh;
-            width: 100vw;
+            height: 600px;
+            width: 1000px;
         }
     </style>
 
@@ -24,6 +24,18 @@
                     subscriptionKey: 'zhnISPrPbfsED8lUiuVuZnGa8lLovPTwf5ffd46IGHo'
                 }
             });
+
+            map.events.add('ready', function() {
+
+                var dataSource = new atlas.source.DataSource();
+                map.sources.add(dataSource);
+                var point = new atlas.Shape(new atlas.data.Point([-122.33, 47.64]));
+                dataSource.add(point);
+
+                map.layers.add(new atlas.layer.SymbolLayer(dataSource, null));
+            });
+
+
         }
     </script>
 
