@@ -1,6 +1,55 @@
-﻿@{
+﻿<head>
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+
+    <style>
+        html, body {
+            margin: 1px,1px,1px,1px;
+        }
+
+        #myMap {
+            height: 600px;
+            width: 1000px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function InitMap() {
+            var map = new atlas.Map('myMap', {
+                center: [-122.33, 47.6],
+                zoom: 12,
+                language: 'en-US',
+                authOptions: {
+                    authType: 'subscriptionKey',
+                    subscriptionKey: 'zhnISPrPbfsED8lUiuVuZnGa8lLovPTwf5ffd46IGHo'
+                }
+            });
+
+            map.events.add('ready', function() {
+
+                var dataSource = new atlas.source.DataSource();
+                map.sources.add(dataSource);
+                var point = new atlas.Shape(new atlas.data.Point([-122.33, 47.64]));
+                dataSource.add(point);
+
+                map.layers.add(new atlas.layer.SymbolLayer(dataSource, null));
+            });
+
+
+        }
+    </script>
+
+    <!-- Ensures that IE and Edge uses the latest version and doesn't emulate an older version -->
+    <meta http-equiv="x-ua-compatible" content="IE=Edge">
+
+    <!-- Ensures the web page looks good on all screen sizes. -->
+    <meta name="viewport" content="width=60%, initial-scale=1, shrink-to-fit=yes">
+</head>
+@{
     ViewData["Title"] = "Privacy Policy";
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<body onload="InitMap()">
+    <div id="myMap"></div>
+</body>
