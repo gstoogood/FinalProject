@@ -48,6 +48,8 @@ namespace _421FinalProject.Controllers
                 destVM.Destination = destination;
                 destVM.Locations = destLocations;
                 destVM.GenInfo = destGenInfo;
+
+                return View();
             }
         }
     }
