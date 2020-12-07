@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\20201207191524_AddedCityClassForTesting.cs" />
+    <Compile Remove="Data\Migrations\20201207191524_AddedCityClassForTesting.Designer.cs" />
     <Compile Remove="Views\Destinations\Bilbao.cshtml.cs" />
   </ItemGroup>
 
