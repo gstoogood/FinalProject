@@ -19,5 +19,6 @@ namespace _421FinalProject.Data
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<GenInfo> GenInfo { get; set; }
         public DbSet<City> City { get; set; }
+        public DbSet<Place> Place { get; set; }
     }
 }

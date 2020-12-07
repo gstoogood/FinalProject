@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _421FinalProject.Data;
 
 namespace _421FinalProject.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201207215623_AddedPlace")]
+    partial class AddedPlace
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -429,55 +431,6 @@ namespace _421FinalProject.Data.Migrations
                     b.ToTable("Location");
                 });
 
-            modelBuilder.Entity("_421FinalProject.Models.Place", b =>
-                {
-                    b.Property<int>("PlaceID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<byte[]>("ImageA")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<byte[]>("ImageB")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<string>("LocationKey")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Note")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OfficialSite")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Subset")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("PlaceID");
-
-                    b.HasIndex("Id");
-
-                    b.ToTable("Place");
-                });
-
             modelBuilder.Entity("_421FinalProject.Models.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
@@ -574,15 +527,6 @@ namespace _421FinalProject.Data.Migrations
                     b.HasOne("_421FinalProject.Models.Destination", "Destination")
                         .WithMany()
                         .HasForeignKey("DestID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("_421FinalProject.Models.Place", b =>
-                {
-                    b.HasOne("_421FinalProject.Models.City", "City")
-                        .WithMany()
-                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

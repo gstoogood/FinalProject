@@ -10,6 +10,16 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20201207191524_AddedCityClassForTesting.cs" />
     <Compile Remove="Data\Migrations\20201207191524_AddedCityClassForTesting.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201207214213_TestingLocationChanges.cs" />
+    <Compile Remove="Data\Migrations\20201207214213_TestingLocationChanges.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201207214536_AddedCityToLocation.cs" />
+    <Compile Remove="Data\Migrations\20201207214536_AddedCityToLocation.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201207214712_AddedCityToLocation.cs" />
+    <Compile Remove="Data\Migrations\20201207214712_AddedCityToLocation.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201207215518_AddedPlace.cs" />
+    <Compile Remove="Data\Migrations\20201207215518_AddedPlace.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201207215928_AddedPlaceTwo.cs" />
+    <Compile Remove="Data\Migrations\20201207215928_AddedPlaceTwo.Designer.cs" />
     <Compile Remove="Views\Destinations\Bilbao.cshtml.cs" />
   </ItemGroup>
 
