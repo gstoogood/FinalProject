@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using _421FinalProject.Data;
 using _421FinalProject.Models;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace _421FinalProject.Views
 {
@@ -57,10 +59,22 @@ namespace _421FinalProject.Views
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PlaceID,Id,Subset,Name,Address,Description,Note,ImageA,ImageB,OfficialSite,LocationKey")] Place place)
+        public async Task<IActionResult> Create([Bind("PlaceID,Id,Subset,Name,Address,Description,Note,OfficialSite,LocationKey")] Place place, IFormFile ImageA, IFormFile ImageB)
         {
             if (ModelState.IsValid)
             {
+                if (ImageA != null && ImageA.Length > 0)
+                {
+                    var memoryStream = new MemoryStream();
+                    await ImageA.CopyToAsync(memoryStream);
+                    place.ImageA = memoryStream.ToArray();
+                }
+                if (ImageB != null && ImageB.Length > 0)
+                {
+                    var memoryStream = new MemoryStream();
+                    await ImageA.CopyToAsync(memoryStream);
+                    place.ImageA = memoryStream.ToArray();
+                }
                 _context.Add(place);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -91,7 +105,7 @@ namespace _421FinalProject.Views
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PlaceID,Id,Subset,Name,Address,Description,Note,ImageA,ImageB,OfficialSite,LocationKey")] Place place)
+        public async Task<IActionResult> Edit(int id, [Bind("PlaceID,Id,Subset,Name,Address,Description,Note,OfficialSite,LocationKey")] Place place, IFormFile ImageA, IFormFile ImageB)
         {
             if (id != place.PlaceID)
             {
@@ -102,6 +116,34 @@ namespace _421FinalProject.Views
             {
                 try
                 {
+                    if (ImageA != null && ImageA.Length > 0)
+                    {
+                        var memoryStream = new MemoryStream();
+                        await ImageA.CopyToAsync(memoryStream);
+                        place.ImageA = memoryStream.ToArray();
+                    }
+                    else
+                    {
+                        City existingPlace = _context.City.AsNoTracking().FirstOrDefault(m => m.Id == id);
+                        if (existingPlace != null)
+                        {
+                            place.ImageA = existingPlace.ImageA;
+                        }
+                    }
+                    if (ImageB != null && ImageB.Length > 0)
+                    {
+                        var memoryStream = new MemoryStream();
+                        await ImageA.CopyToAsync(memoryStream);
+                        place.ImageA = memoryStream.ToArray();
+                    }
+                    else
+                    {
+                        City existingPlace = _context.City.AsNoTracking().FirstOrDefault(m => m.Id == id);
+                        if (existingPlace != null)
+                        {
+                            place.ImageB = existingPlace.ImageB;
+                        }
+                    }
                     _context.Update(place);
                     await _context.SaveChangesAsync();
                 }
