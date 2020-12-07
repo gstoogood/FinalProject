@@ -1,4 +1,6 @@
-﻿function InitMap() {
+﻿import * as atlas from 'azure-maps-control';
+
+function InitMap() {
     var map = new atlas.Map('myMap', {
         center: [-2.93, 43.26],
         zoom: 13,
@@ -62,6 +64,20 @@
         });
     });
 }
-function GiveMap() {
-    return 
+export default function GiveMap(centerHere) {
+    var [] fixedCoords = ParseCoords(centerHere);
+    var map = new atlas.Map('myMap', {
+        center: [fixedCoords[1], fixedCoords[0]],
+        zoom: 13,
+        language: 'en-US',
+        authOptions: {
+            authType: 'subscriptionKey',
+            subscriptionKey: 'zhnISPrPbfsED8lUiuVuZnGa8lLovPTwf5ffd46IGHo'
+        }
+    });
+    return map;
+}
+function ParseCoords(coords) {
+    var[] coordinates = coords.split(",");
+    return coordinates;
 }

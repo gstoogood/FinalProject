@@ -66,6 +66,12 @@ namespace _421FinalProject.Views
                     await ImageA.CopyToAsync(memoryStream);
                     city.ImageA = memoryStream.ToArray();
                 }
+                if (ImageB != null && ImageB.Length > 0)
+                {
+                    var memoryStream = new MemoryStream();
+                    await ImageB.CopyToAsync(memoryStream);
+                    city.ImageB = memoryStream.ToArray();
+                }
                 _context.Add(city);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -117,6 +123,20 @@ namespace _421FinalProject.Views
                         if (existingPlace != null)
                         {
                             city.ImageA = existingPlace.ImageA;
+                        }
+                    }
+                    if (ImageB != null && ImageB.Length > 0)
+                    {
+                        var memoryStream = new MemoryStream();
+                        await ImageB.CopyToAsync(memoryStream);
+                        city.ImageB = memoryStream.ToArray();
+                    }
+                    else
+                    {
+                        City existingPlace = _context.City.AsNoTracking().FirstOrDefault(m => m.Id == id);
+                        if (existingPlace != null)
+                        {
+                            city.ImageB = existingPlace.ImageB;
                         }
                     }
                     _context.Update(city);
