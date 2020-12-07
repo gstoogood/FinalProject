@@ -1,0 +1,54 @@
+﻿@model IEnumerable<_421FinalProject.ViewModels.DestinationViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Destination.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destination.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destination.OfficialLanguage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Locations[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Locations[0].Subset)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.Destination.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => item.Destination.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => item.Destination.OfficialLanguage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => item.Locations[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => item.Locations[0].Subset)
+            </th>
+        </tr>
+    </tbody>
+</table>
