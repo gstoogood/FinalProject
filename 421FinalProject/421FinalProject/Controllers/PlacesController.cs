@@ -133,8 +133,8 @@ namespace _421FinalProject.Views
                     if (ImageB != null && ImageB.Length > 0)
                     {
                         var memoryStream = new MemoryStream();
-                        await ImageA.CopyToAsync(memoryStream);
-                        place.ImageA = memoryStream.ToArray();
+                        await ImageB.CopyToAsync(memoryStream);
+                        place.ImageB = memoryStream.ToArray();
                     }
                     else
                     {
