@@ -17,8 +17,12 @@
         }
 
         #myMap {
-            height: 600px;
-            width: 1000px;
+            height: 250px;
+            width: 400px;
+            margin: 10px;
+        }
+        h1 {
+            margin-top: 10px;
         }
     </style>
 
@@ -102,91 +106,47 @@
 
 
 
-<body onload="InitMap()">
-    <h1>Details</h1>
-
-    <div>
-        <h4>City</h4>
-        <hr />
-        <dl class="row">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Country)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Country)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.OfficialLanguage)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.OfficialLanguage)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ImageA)
-            </dt>
-            <dd class="col-sm-10">
+<body class="home-body" onload="InitMap()">
+    <div class="container card">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1 style="margin-top:10px !important;">@Html.DisplayFor(model => model.Name)</h1>
+                <h3>@Html.DisplayFor(model => model.Country)</h3>
+            </div>
+            <div class="col-lg-6">
                 @if (Model.ImageA != null)
                     @if (Model.ImageA != null)
                     {
                         var base64 = Convert.ToBase64String(Model.ImageA);
                         var imgSrc = string.Format("data:image/jpg;base64,{0}", base64);
+                        <img src="@imgSrc" height="250" width="400" style="margin:10px"/>
+                    }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <p>Official Language: @Html.DisplayFor(model => model.OfficialLanguage)</p>
+                <p>Official Website: @Html.DisplayFor(model => model.OfficialSite)</p>
+                <p>Location Key: @Html.DisplayFor(model => model.LocationKey)</p>
+            </div>
+            <div class="col-lg-6">
+                <div id="myMap"></div>
+                @if (Model.ImageB != null)
+                    @if (Model.ImageB != null)
+                    {
+                        var base64 = Convert.ToBase64String(Model.ImageB);
+                        var imgSrc = string.Format("data:image/jpg;base64,{0}", base64);
                         <img src="@imgSrc" height="100" width="100" />
                     }
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.ImageB)
-                </dt>
-                <dd class="col-sm-10">
-                    @if (Model.ImageB != null)
-                        @if (Model.ImageB != null)
-                        {
-                            var base64 = Convert.ToBase64String(Model.ImageB);
-                            var imgSrc = string.Format("data:image/jpg;base64,{0}", base64);
-                            <img src="@imgSrc" height="100" width="100" />
-                        }
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.ImageC)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.ImageC)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.ImageD)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.ImageD)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.OfficialSite)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.OfficialSite)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.LocationKey)
-                    </dt>
-                    <dd class="col-sm-10">
-                        @Html.DisplayFor(model => model.LocationKey)
-                    </dd>
-                    <dd class="col-sm-10">
-                        <button class="nav-link text-dark" asp-area="" asp-controller="Locations" asp-action="Index">See locations in this city</button>
-                    </dd>
-                </dl>
-            </div>
-            <div id="myMap"></div>
-            <div>
-                <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-                <a asp-action="Index">Back to List</a>
-            </div>
-
-        </body>
+                </div>
+        </div>
+        <button style="margin:10px;" class="btn-secondary" asp-area="" asp-controller="Locations" asp-action="Index">See locations in this city</button>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</body>
 
 
 
