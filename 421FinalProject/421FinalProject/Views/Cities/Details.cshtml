@@ -28,7 +28,10 @@
             font-size: 30px;
             border: 2px solid rgba(74, 216, 238, 0.8);
             border-radius: 5px;
-            padding: 10px;        
+            padding: 10px;
+        }
+        a.places-button:hover {
+            text-decoration: none;
         }
 
         h1 { 
@@ -139,7 +142,7 @@
 
 
 <body class="home-body" onload="InitMap()">
-    <div class="container card">
+    <div class="container card" style="padding:20px;">
         <div class="row">
             <div class="col-6">
                 <h1 style="margin-top: 10px !important">@Html.DisplayFor(model => model.Name)</h1>
@@ -159,7 +162,7 @@
                     }
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="margin-top:20px;">
             <div class="col-6 text-center">
                 <div id="myMap"></div>
             </div>
