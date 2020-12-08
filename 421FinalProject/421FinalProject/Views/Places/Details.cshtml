@@ -4,76 +4,174 @@
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<head>
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
 
-<h1>Details</h1>
+    <style>
+        html, body {
+            margin: 1px,1px,1px,1px;
+        }
 
-<div>
-    <h4>Place</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.City.Country)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Subset)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Subset)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Note)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Note)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageA)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageA)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageB)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageB)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OfficialSite)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OfficialSite)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LocationKey)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LocationKey)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.PlaceID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+        #myMap {
+            height: 600px;
+            width: 1000px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function InitMap() {
+            var map = new atlas.Map('myMap', {
+                center: [@Model.LocationKey.Split(",")[0], @Model.LocationKey.Split(",")[1]],
+                zoom: 13,
+                language: 'en-US',
+                authOptions: {
+                    authType: 'subscriptionKey',
+                    subscriptionKey: 'zhnISPrPbfsED8lUiuVuZnGa8lLovPTwf5ffd46IGHo'
+                }
+            });
+
+            map.events.add('ready', function() {
+                //Define an HTML template for a custom popup content laypout.
+                var popupTemplate = '<div class="customInfobox"><div class="name">{name}</div>{description}</div>';
+
+                var dataSource = new atlas.source.DataSource();
+                map.sources.add(dataSource);
+
+                dataSource.add(new atlas.data.Feature(new atlas.data.Point([@Model.LocationKey.Split(",")[0], @Model.LocationKey.Split(",")[1]]), {
+                    name: '@Model.Name',
+                    description: '@Model.Description',
+                    LocID: '12'
+                }));
+
+                var symbolLayer = (new atlas.layer.SymbolLayer(dataSource, null));
+                map.layers.add(symbolLayer);
+
+                popup = new atlas.Popup({
+                    pixelOffset: [0, -18],
+                    closeButton: false
+                });
+
+                //Add a hover event to the symbol layer.
+                map.events.add('mouseover', symbolLayer, function (e) {
+                    //Make sure that the point exists.
+                    if (e.shapes && e.shapes.length > 0) {
+                        var content, coordinate;
+                        var properties = e.shapes[0].getProperties();
+                        content = popupTemplate.replace(/{name}/g, properties.name).replace(/{description}/g, properties.description);
+                        coordinate = e.shapes[0].getCoordinates();
+
+                        popup.setOptions({
+                            //Update the content of the popup.
+                            content: content,
+
+                            //Update the popup's position with the symbol's coordinate.
+                            position: coordinate
+
+                        });
+                        //Open the popup.
+                        popup.open(map);
+                    }
+                });
+
+                map.events.add('mouseleave', symbolLayer, function () {
+                    popup.close();
+                });
+
+                map.events.add('click', symbolLayer, function (e) {
+                    var properties = e.shapes[0].getProperties();
+                    location.href = '/places/details/' + properties.PlaceID
+                });
+            });
+
+
+        }
+    </script>
+
+    <!-- Ensures that IE and Edge uses the latest version and doesn't emulate an older version -->
+    <meta http-equiv="x-ua-compatible" content="IE=Edge">
+
+    <!-- Ensures the web page looks good on all screen sizes. -->
+    <meta name="viewport" content="width=60%, initial-scale=1, shrink-to-fit=yes">
+</head>
+
+
+<body onload="InitMap()">
+    
+
+    <h1>Details</h1>
+
+    <div>
+        <h4>Place</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.City)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.City.Country)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Subset)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Subset)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Note)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Note)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageA)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageA)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageB)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageB)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.OfficialSite)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.OfficialSite)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.LocationKey)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.LocationKey)
+            </dd>
+            <div id="myMap"></div>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.PlaceID">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+
+</body>
