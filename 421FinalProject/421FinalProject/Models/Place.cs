@@ -28,10 +28,8 @@ namespace _421FinalProject.Models
         [Required]
         public string Description { get; set; }
 
-
         public string Note { get; set; }
 
-        [Required]
         [DataType(DataType.Upload)]
         public byte[] ImageA { get; set; }
 
