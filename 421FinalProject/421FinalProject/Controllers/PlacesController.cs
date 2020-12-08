@@ -23,13 +23,15 @@ namespace _421FinalProject.Views
         }
 
         // GET: Places
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> SelectIndex(string cityID)
         {
-            var applicationDbContext = _context.Place.Include(p => p.City);
+            var applicationDbContext = _context.Place.Include(p => p.City).Where(p => p.City.Id.Equals(cityID));
+            //var selectedData = from p in applicationDbContext select p;
+            //selectedData = selectedData.Where(p => p.City.Id.Equals(cityID));
             return View(await applicationDbContext.ToListAsync());
         }
 
-        public async Task<IActionResult> SelectIndex(int cityID)
+        public async Task<IActionResult> SelectIndexOld(int cityID)
         {
             var applicationDbContext = _context.Place.Include(p => p.City);
             List<Place> selectedContext = new List<Place>();
@@ -44,10 +46,15 @@ namespace _421FinalProject.Views
 
             return View(selectedContext);
         }
+        public async Task<IActionResult> Index(int cityID)
+        {
+            var applicationDbContext = _context.Place.Include(p => p.City);
 
+            return View(await applicationDbContext.ToListAsync());
+        }
 
-        // GET: Places/Details/5
-        public async Task<IActionResult> Details(int? id)
+            // GET: Places/Details/5
+            public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
