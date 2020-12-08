@@ -15,13 +15,26 @@
             margin: 1px,1px,1px,1px;
         }
 
-        #myMap {
+        #myMap, img {
             height: 250px;
             width: 400px;
             margin: 10px;
+            text-align: center;
+            border: 2px solid rgba(74, 216, 238, 0.8);
+            border-radius: 5px;
         }
 
-        h1 {
+        .places-button {
+            font-size: 30px;
+            border: 2px solid rgba(74, 216, 238, 0.8);
+            border-radius: 5px;
+            padding: 10px;
+        }
+        a.places-button:hover {
+            text-decoration: none;
+        }
+
+        h1 { 
             margin-top: 10px;
         }
     </style>
@@ -128,52 +141,32 @@
 
 
 
-<body onload="InitMap()">
-    <h1>Details</h1>
-
-    <div>
-        <h4>City</h4>
-        <hr />
-        <dl class="row">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Name)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Country)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Country)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.OfficialLanguage)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.OfficialLanguage)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.ImageA)
-            </dt>
-            <dd class="col-sm-10">
+<body class="home-body" onload="InitMap()">
+    <div class="container card" style="padding:20px;">
+        <div class="row">
+            <div class="col-6">
+                <h1 style="margin-top: 10px !important">@Html.DisplayFor(model => model.Name)</h1>
+                <h2>@Html.DisplayFor(model => model.Country)</h2>
+                <p>Official Language: @Html.DisplayFor(model => model.OfficialLanguage)</p>
+                <p>Location Key: @Html.DisplayFor(model => model.LocationKey)</p>
+                <p>@Html.DisplayFor(model => model.OfficialSite)</p>
+                <a class="btn-secondary places-button" asp-controller="Places" asp-action="SelectIndex" asp-route-id="3">See places in this city</a>
+            </div>
+            <div class="col-6 text-center">
                 @if (Model.ImageA != null)
                     @if (Model.ImageA != null)
                     {
                         var base64 = Convert.ToBase64String(Model.ImageA);
                         var imgSrc = string.Format("data:image/jpg;base64,{0}", base64);
-                        <img src="@imgSrc" height="250" width="400" style="margin:10px"/>
+                        <img src="@imgSrc" height="250" width="400" style="margin:10px" />
                     }
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <p>Official Language: @Html.DisplayFor(model => model.OfficialLanguage)</p>
-                <p>Official Website: @Html.DisplayFor(model => model.OfficialSite)</p>
-                <p>Location Key: @Html.DisplayFor(model => model.LocationKey)</p>
-            </div>
-            <div class="col-lg-6">
+        <div class="row" style="margin-top:20px;">
+            <div class="col-6 text-center">
                 <div id="myMap"></div>
+            </div>
+            <div class="col-6 text-center">
                 @if (Model.ImageB != null)
                     @if (Model.ImageB != null)
                     {
@@ -181,12 +174,10 @@
                         var imgSrc = string.Format("data:image/jpg;base64,{0}", base64);
                         <img src="@imgSrc" height="100" width="100" />
                     }
-                </div>
+            </div>
         </div>
-        <button style="margin:10px;" class="btn-secondary" asp-area="" asp-controller="Places" asp-action="SelectIndex" asp-route-id="Bilbao" >See locations in this city</button>
     </div>
     <div>
-        <a asp-controller="Places" asp-action="SelectIndex" asp-route-id="3" >See places in this city</a> |
         <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
         <a asp-action="Index">Back to List</a>
     </div>
