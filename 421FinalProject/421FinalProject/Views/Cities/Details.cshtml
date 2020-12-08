@@ -49,8 +49,8 @@
             function InitMap() {
 
                 var map = new atlas.Map('myMap', {
-                    center: [-2.93, 43.26],
-                    zoom: 13,
+                    center: [@Model.LocationKey.Split(",")[0], @Model.LocationKey.Split(",")[1]],
+                    zoom: 11,
                     language: 'en-US',
                     authOptions: {
                         authType: 'subscriptionKey',
