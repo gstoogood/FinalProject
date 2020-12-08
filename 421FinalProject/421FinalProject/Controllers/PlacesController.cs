@@ -25,7 +25,7 @@ namespace _421FinalProject.Views
         // GET: Places
         public async Task<IActionResult> SelectIndex(string cityID)
         {
-            var applicationDbContext = _context.Place.Include(p => p.City).Where(p => p.City.Id.Equals(cityID));
+            var applicationDbContext = _context.Place.Include(p => p.City);
             //var selectedData = from p in applicationDbContext select p;
             //selectedData = selectedData.Where(p => p.City.Id.Equals(cityID));
             return View(await applicationDbContext.ToListAsync());
