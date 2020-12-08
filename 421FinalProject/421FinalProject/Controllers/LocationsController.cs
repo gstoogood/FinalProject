@@ -26,6 +26,13 @@ namespace _421FinalProject.Views
             return View(await applicationDbContext.ToListAsync());
         }
 
+        public async Task<IActionResult> SelectIndex(int destID)
+        {
+            var applicationDbContext = _context.Location.Include(l => l.Destination.DestID == destID);
+            //var selectContents = from Location in applicationDbContext where Location.DestID == inputId select Location;
+            return View(await applicationDbContext.ToListAsync());
+        }
+
         // GET: Locations/Details/5
         public async Task<IActionResult> Details(int? id)
         {

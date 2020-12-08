@@ -46,4 +46,6 @@
 <div>
     <a asp-action="Edit" asp-route-id="@Model.DestID">Edit</a> |
     <a asp-action="Index">Back to List</a>
+    <a asp-controller="Locations" asp-action="SelectIndex" asp-route-id="1">Button</a>
+    <button style="margin:10px;" class="btn-secondary" asp-area="" asp-controller="Locations" asp-action="SelectIndex" asp-route-id="@Model.DestID">See locations in this city</button>
 </div>

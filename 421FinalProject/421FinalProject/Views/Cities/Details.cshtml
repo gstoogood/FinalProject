@@ -20,14 +20,29 @@
             width: 400px;
             margin: 10px;
         }
+
         h1 {
             margin-top: 10px;
         }
     </style>
     @section scripts {
 
+
+        @*function InitMap() {
+        var coordString = @Model.LocationKey;
+        var coords[] = coordString.split(",");
+        var map = new atlas.Map('myMap', {
+        center: [coords[0], coords[1]],
+        zoom: 13,
+        language: 'en-US',
+        authOptions: {
+        authType: 'subscriptionKey',
+        subscriptionKey: 'zhnISPrPbfsED8lUiuVuZnGa8lLovPTwf5ffd46IGHo'
+        }
+        });*@
+
         <script>
-            var coords[] = Model.LocationKey.split(",");
+            var coords = Model.LocationKey.split(",");
         </script>
 
         <script type="text/javascript">
@@ -101,15 +116,15 @@
 
             }
         </script>
-    }
+        }
 
 
-    @*Ensures that IE and Edge uses the latest version and doesn't emulate an older version*@
-    <meta http-equiv="x-ua-compatible" content="IE=Edge">
+        @*Ensures that IE and Edge uses the latest version and doesn't emulate an older version*@
+        <meta http-equiv="x-ua-compatible" content="IE=Edge">
 
-    @*Ensures the web page looks good on all screen sizes.*@
-    <meta name="viewport" content="width=60%, initial-scale=1, shrink-to-fit=yes">
-</head>
+        @*Ensures the web page looks good on all screen sizes.*@
+        <meta name="viewport" content="width=60%, initial-scale=1, shrink-to-fit=yes">
+    </head>
 
 
 
@@ -168,7 +183,7 @@
                     }
                 </div>
         </div>
-        <button style="margin:10px;" class="btn-secondary" asp-area="" asp-controller="Locations" asp-action="Index">See locations in this city</button>
+        <button style="margin:10px;" class="btn-secondary" asp-area="" asp-controller="Locations" asp-action="Index" >See locations in this city</button>
     </div>
     <div>
         <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
