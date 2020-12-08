@@ -15,7 +15,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Id" class="control-label"></label>
-                <select asp-for="Id" class ="form-control" asp-items="ViewBag.Id"></select>
+                <select asp-for="Id" class="form-control" asp-items="ViewBag.Id"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Subset" class="control-label"></label>
@@ -44,12 +44,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="ImageA" class="control-label"></label>
-                <input asp-for="ImageA" class="form-control" />
+                <input type="file" id="ImageA" name="ImageA" multiple class="form-control" />
                 <span asp-validation-for="ImageA" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ImageB" class="control-label"></label>
-                <input asp-for="ImageB" class="form-control" />
+                <input type="file" id="ImageB" name="ImageB" multiple class="form-control" />
                 <span asp-validation-for="ImageB" class="text-danger"></span>
             </div>
             <div class="form-group">
