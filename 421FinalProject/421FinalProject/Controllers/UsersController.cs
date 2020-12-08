@@ -13,7 +13,6 @@ using _421FinalProject.Models;
 
 namespace _421FinalProject.Views
 {
-    [Authorize(Roles = SD.Admin)]
     public class UsersController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -39,6 +38,7 @@ namespace _421FinalProject.Views
         }
 
         // GET: Users/Details/5
+        [Authorize(Roles = SD.Admin)]
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -148,6 +148,7 @@ namespace _421FinalProject.Views
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = SD.Admin)]
         public async Task<IActionResult> Edit(string id, RoleUserVM submitUser)
         {
             if (id != submitUser.AppUser.Id)
