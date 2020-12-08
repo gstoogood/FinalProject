@@ -69,7 +69,7 @@ namespace _421FinalProject.Views
         [Authorize(Roles = SD.Admin)]
         public IActionResult Create()
         {
-            ViewData["Id"] = new SelectList(_context.City, "Id", "Country");
+            ViewData["Id"] = new SelectList(_context.City, "Id", "Name");
             return View();
         }
 
