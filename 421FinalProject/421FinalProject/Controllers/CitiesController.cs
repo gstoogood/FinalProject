@@ -9,6 +9,7 @@ using _421FinalProject.Data;
 using _421FinalProject.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace _421FinalProject.Views
 {
@@ -46,6 +47,7 @@ namespace _421FinalProject.Views
         }
 
         // GET: Cities/Create
+        [Authorize(Roles = SD.Admin)]
         public IActionResult Create()
         {
             return View();
@@ -56,6 +58,7 @@ namespace _421FinalProject.Views
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = SD.Admin)]
         public async Task<IActionResult> Create([Bind("Id,Name,Country,OfficialLanguage,OfficialSite,LocationKey")] City city, IFormFile ImageA, IFormFile ImageB, IFormFile ImageC, IFormFile ImageD)
         {
             if (ModelState.IsValid)
@@ -80,6 +83,7 @@ namespace _421FinalProject.Views
         }
 
         // GET: Cities/Edit/5
+        [Authorize(Roles = SD.Admin)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -100,6 +104,7 @@ namespace _421FinalProject.Views
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = SD.Admin)]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Country,OfficialLanguage,OfficialSite,LocationKey")] City city, IFormFile ImageA, IFormFile ImageB, IFormFile ImageC, IFormFile ImageD)
         {
             if (id != city.Id)
@@ -159,6 +164,7 @@ namespace _421FinalProject.Views
         }
 
         // GET: Cities/Delete/5
+        [Authorize(Roles = SD.Admin)]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -179,6 +185,7 @@ namespace _421FinalProject.Views
         // POST: Cities/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = SD.Admin)]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var city = await _context.City.FindAsync(id);

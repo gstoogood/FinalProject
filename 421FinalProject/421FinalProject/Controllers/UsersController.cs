@@ -13,7 +13,7 @@ using _421FinalProject.Models;
 
 namespace _421FinalProject.Views
 {
-    [Authorize (Roles = SD.Admin)]
+    [Authorize(Roles = SD.Admin)]
     public class UsersController : Controller
     {
         private readonly ApplicationDbContext _context;
