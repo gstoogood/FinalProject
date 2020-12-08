@@ -29,6 +29,23 @@ namespace _421FinalProject.Views
             return View(await applicationDbContext.ToListAsync());
         }
 
+        public async Task<IActionResult> SelectIndex(int cityID)
+        {
+            var applicationDbContext = _context.Place.Include(p => p.City);
+            List<Place> selectedContext = new List<Place>();
+
+            foreach (Place place in applicationDbContext)
+            {
+                if (place.Id == cityID)
+                {
+                    selectedContext.Add(place);
+                }
+            }
+
+            return View(selectedContext);
+        }
+
+
         // GET: Places/Details/5
         public async Task<IActionResult> Details(int? id)
         {
