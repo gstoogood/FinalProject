@@ -29,7 +29,7 @@ namespace _421FinalProject.Views
             return View(await applicationDbContext.ToListAsync());
         }
 
-        public async Task<IActionResult> SelectIndex(int cityID)
+        public async Task<IActionResult> SelectIndexOld(int cityID)
         {
             var applicationDbContext = _context.Place.Include(p => p.City);
             List<Place> selectedContext = new List<Place>();
@@ -44,10 +44,15 @@ namespace _421FinalProject.Views
 
             return View(selectedContext);
         }
+        public async Task<IActionResult> SelectIndex(int cityID)
+        {
+            var applicationDbContext = _context.Place.Include(p => p.City);
 
+            return View(await applicationDbContext.ToListAsync());
+        }
 
-        // GET: Places/Details/5
-        public async Task<IActionResult> Details(int? id)
+            // GET: Places/Details/5
+            public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
