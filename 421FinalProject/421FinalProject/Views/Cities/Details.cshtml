@@ -24,16 +24,6 @@
             border-radius: 5px;
         }
 
-        .places-button {
-            font-size: 30px;
-            border: 2px solid rgba(74, 216, 238, 0.8);
-            border-radius: 5px;
-            padding: 10px;
-        }
-        a.places-button:hover {
-            text-decoration: none;
-        }
-
         h1 { 
             margin-top: 10px;
         }
@@ -150,7 +140,6 @@
                 <p>Official Language: @Html.DisplayFor(model => model.OfficialLanguage)</p>
                 <p>Location Key: @Html.DisplayFor(model => model.LocationKey)</p>
                 <p>@Html.DisplayFor(model => model.OfficialSite)</p>
-                <a class="btn-secondary places-button" asp-controller="Places" asp-action="Index">See places in this city</a>
             </div>
             <div class="col-6 text-center">
                 @if (Model.ImageA != null)
