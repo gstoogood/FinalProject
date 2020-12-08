@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using _421FinalProject.Models;
+using FinalProject421.Models;
 
-namespace _421FinalProject.Models
+namespace FinalProject421.Models
 {
     public class RoleUserVM
     {

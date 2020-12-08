@@ -4,10 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using _421FinalProject.Data;
-using _421FinalProject.Models;
+using FinalProject421.Data;
+using FinalProject421.Models;
 
-namespace _421FinalProject
+namespace FinalProject421
 {
     public class DbInitializer : IDbInitializer
     {

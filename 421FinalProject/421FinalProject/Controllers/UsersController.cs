@@ -8,10 +8,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using _421FinalProject.Data;
-using _421FinalProject.Models;
+using FinalProject421.Data;
+using FinalProject421.Models;
 
-namespace _421FinalProject.Views
+namespace FinalProject421.Views
 {
     [Authorize(Roles = SD.Admin)]
     public class UsersController : Controller

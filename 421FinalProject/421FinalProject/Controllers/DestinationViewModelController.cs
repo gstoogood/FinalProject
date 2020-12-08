@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
-using _421FinalProject.Data;
-using _421FinalProject.Models;
-using _421FinalProject.ViewModels;
+using FinalProject421.Data;
+using FinalProject421.Models;
+using FinalProject421.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace _421FinalProject.Controllers
+namespace FinalProject421.Controllers
 {
     public class DestinationVMController : Controller
     {

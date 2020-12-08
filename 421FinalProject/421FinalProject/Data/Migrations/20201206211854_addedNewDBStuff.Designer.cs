@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using _421FinalProject.Data;
+using FinalProject421.Data;
 
-namespace _421FinalProject.Data.Migrations
+namespace FinalProject421.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20201206211854_addedNewDBStuff")]
@@ -223,7 +223,7 @@ namespace _421FinalProject.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("_421FinalProject.Models.Destination", b =>
+            modelBuilder.Entity("FinalProject421.Models.Destination", b =>
                 {
                     b.Property<int>("DestID")
                         .ValueGeneratedOnAdd()
@@ -273,7 +273,7 @@ namespace _421FinalProject.Data.Migrations
                     b.ToTable("Destination");
                 });
 
-            modelBuilder.Entity("_421FinalProject.Models.GenInfo", b =>
+            modelBuilder.Entity("FinalProject421.Models.GenInfo", b =>
                 {
                     b.Property<int>("GenInfoID")
                         .ValueGeneratedOnAdd()
@@ -323,7 +323,7 @@ namespace _421FinalProject.Data.Migrations
                     b.ToTable("GenInfo");
                 });
 
-            modelBuilder.Entity("_421FinalProject.Models.Location", b =>
+            modelBuilder.Entity("FinalProject421.Models.Location", b =>
                 {
                     b.Property<int>("LocID")
                         .ValueGeneratedOnAdd()
@@ -389,7 +389,7 @@ namespace _421FinalProject.Data.Migrations
                     b.ToTable("Location");
                 });
 
-            modelBuilder.Entity("_421FinalProject.Models.ApplicationUser", b =>
+            modelBuilder.Entity("FinalProject421.Models.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -471,18 +471,18 @@ namespace _421FinalProject.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("_421FinalProject.Models.GenInfo", b =>
+            modelBuilder.Entity("FinalProject421.Models.GenInfo", b =>
                 {
-                    b.HasOne("_421FinalProject.Models.Destination", "Destination")
+                    b.HasOne("FinalProject421.Models.Destination", "Destination")
                         .WithMany()
                         .HasForeignKey("DestID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("_421FinalProject.Models.Location", b =>
+            modelBuilder.Entity("FinalProject421.Models.Location", b =>
                 {
-                    b.HasOne("_421FinalProject.Models.Destination", "Destination")
+                    b.HasOne("FinalProject421.Models.Destination", "Destination")
                         .WithMany()
                         .HasForeignKey("DestID")
                         .OnDelete(DeleteBehavior.Cascade)

@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using _421FinalProject.Data;
-using _421FinalProject.Models;
+using FinalProject421.Data;
+using FinalProject421.Models;
 
-namespace _421FinalProject.Views
+namespace FinalProject421.Views
 {
     public class LocationsController : Controller
     {

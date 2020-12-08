@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _421FinalProject.Models
+namespace FinalProject421.Models
 {
     public class GenInfo
     {

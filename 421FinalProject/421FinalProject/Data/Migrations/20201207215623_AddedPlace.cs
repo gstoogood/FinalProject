@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace _421FinalProject.Data.Migrations
+namespace FinalProject421.Data.Migrations
 {
     public partial class AddedPlace : Migration
     {

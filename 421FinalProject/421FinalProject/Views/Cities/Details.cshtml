@@ -1,4 +1,4 @@
-﻿@model _421FinalProject.Models.City
+﻿@model FinalProject421.Models.City
 
 
 @{
@@ -29,18 +29,20 @@
 
 
         @*function InitMap() {
-        var coordString = @Model.LocationKey;
-        var coords[] = coordString.split(",");
-        var map = new atlas.Map('myMap', {
-        center: [coords[0], coords[1]],
-        zoom: 13,
-        language: 'en-US',
-        authOptions: {
-        authType: 'subscriptionKey',
-        subscriptionKey: 'zhnISPrPbfsED8lUiuVuZnGa8lLovPTwf5ffd46IGHo'
-        }
-        });*@
+            var coordString = @Model.LocationKey;
+            var coords[] = coordString.split(",");
+            var map = new atlas.Map('myMap', {
+            center: [coords[0], coords[1]],
+            zoom: 13,
+            language: 'en-US',
+            authOptions: {
+            authType: 'subscriptionKey',
+            subscriptionKey: 'zhnISPrPbfsED8lUiuVuZnGa8lLovPTwf5ffd46IGHo'
+            }
+            });*@
 
+
+        @*center: [-2.93, 43.26],*@
         <script>
             var coords = Model.LocationKey.split(",");
         </script>
@@ -49,7 +51,7 @@
             function InitMap() {
 
                 var map = new atlas.Map('myMap', {
-                    center: [-2.93, 43.26],
+                    center: [@Model.LocationKey.Split(",")[0], @Model.LocationKey.Split(",")[1]],
                     zoom: 13,
                     language: 'en-US',
                     authOptions: {
@@ -116,15 +118,15 @@
 
             }
         </script>
-        }
+    }
 
 
-        @*Ensures that IE and Edge uses the latest version and doesn't emulate an older version*@
-        <meta http-equiv="x-ua-compatible" content="IE=Edge">
+    @*Ensures that IE and Edge uses the latest version and doesn't emulate an older version*@
+    <meta http-equiv="x-ua-compatible" content="IE=Edge">
 
-        @*Ensures the web page looks good on all screen sizes.*@
-        <meta name="viewport" content="width=60%, initial-scale=1, shrink-to-fit=yes">
-    </head>
+    @*Ensures the web page looks good on all screen sizes.*@
+    <meta name="viewport" content="width=60%, initial-scale=1, shrink-to-fit=yes">
+</head>
 
 
 

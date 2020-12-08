@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using _421FinalProject.Models;
+using FinalProject421.Models;
 
 
-namespace _421FinalProject.Models
+namespace FinalProject421.Models
 {
     public class CreateUserVM
     {

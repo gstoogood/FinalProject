@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace _421FinalProject
+namespace FinalProject421
 {
     public static class SD
     {

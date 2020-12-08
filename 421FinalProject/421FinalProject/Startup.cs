@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
-using _421FinalProject.Data;
+using FinalProject421.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace _421FinalProject
+namespace FinalProject421
 {
     public class Startup
     {
@@ -33,10 +33,10 @@ namespace _421FinalProject
             services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
 
-            services.Configure<IdentityOptions>(options =>
-            {
-                options.User.RequireUniqueEmail = true;
-            });
+            //services.Configure<IdentityOptions>(options =>
+            //{
+            //    options.User.RequireUniqueEmail = true;
+            //});
 
             services.AddScoped<IDbInitializer, DbInitializer>();
 
@@ -56,7 +56,7 @@ namespace _421FinalProject
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
-                //app.UseHsts();
+                app.UseHsts();
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -73,6 +73,7 @@ namespace _421FinalProject
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+            
         }
     }
 }

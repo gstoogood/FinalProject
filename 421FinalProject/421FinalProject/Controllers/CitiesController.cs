@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using _421FinalProject.Data;
-using _421FinalProject.Models;
+using FinalProject421.Data;
+using FinalProject421.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Authorization;
 
-namespace _421FinalProject.Views
+namespace FinalProject421.Views
 {
     public class CitiesController : Controller
     {

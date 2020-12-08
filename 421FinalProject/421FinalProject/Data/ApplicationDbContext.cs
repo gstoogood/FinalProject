@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using _421FinalProject.Models;
+using FinalProject421.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace _421FinalProject.Data
+namespace FinalProject421.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

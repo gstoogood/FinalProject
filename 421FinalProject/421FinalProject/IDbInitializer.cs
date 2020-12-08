@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace _421FinalProject
+namespace FinalProject421
 {
     public interface IDbInitializer
     {

@@ -4,7 +4,7 @@
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/destination/databases/DestinationDB",
       "type": "mssql.azure",
       "connectionId": "DefaultConnection",
-      "secretStore": "AzureAppSettings"
+      "secretStore": null
     }
   }
 }
