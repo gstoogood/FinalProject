@@ -56,7 +56,7 @@ namespace _421FinalProject
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
-                app.UseHsts();
+                //app.UseHsts();
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
