@@ -10576,8 +10576,7 @@ body.home-body {
     background: linear-gradient(to bottom, rgba(74, 216, 238, 0.8) 0%, rgba(96, 96, 96, 0.8) 100%), url("../assets/img/bg-masthead.jpg");
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-size: cover;
+    background-attachment: fixed;
 }
 
     body.home-body h1 {
@@ -10643,7 +10642,7 @@ hr.light {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     background-color: #fff;
     transition: background-color 0.2s ease;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     margin-top: 10px;
 }
 
